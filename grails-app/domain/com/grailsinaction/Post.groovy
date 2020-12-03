@@ -7,6 +7,8 @@ class Post {
         content blank: false
     }
 
+    static hasMany = [tags : Tag ]
+
     static belongsTo = [ user : User ]
 
     //all queries to the Post object return in a descending order
