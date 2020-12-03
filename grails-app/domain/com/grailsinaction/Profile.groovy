@@ -10,6 +10,7 @@ class Profile {
     String timezone
     String country
     String jabberAddress
+
     static constraints = {
         fullName blank: false
         bio nullable: true, maxSize: 1000
@@ -20,4 +21,11 @@ class Profile {
         timezone nullable: true
         jabberAddress email: true, nullable: true
     }
+
+
+    @Override
+    public String toString() {
+        return fullName
+    }
+
 }
