@@ -8,14 +8,14 @@ class User {
     Date dateCreated
     Date lastUpdated
 
-    static hasOne = [ profile : Profile ]
-    static hasMany = [ posts : Post, tags : Tag ]
+    static hasOne = [profile: Profile]
+    static hasMany = [posts: Post, tags: Tag, following: User]
 
     static constraints = {
         loginId size: 3..20, unique: true, nullable: false
         password size: 6..8, nullable: false
         confirmPassword size: 6..8, nullable: false, validator: { passwd, user ->
-            if(passwd != user.password)
+            if (passwd != user.password)
                 "user.password.notconfirmed"
         }
         homepage url: true, nullable: true
@@ -24,6 +24,6 @@ class User {
 
     // posts sorted when accessing them via the User object
     static mapping = {
-        posts sort:'dateCreated'
+        posts sort: 'dateCreated'
     }
 }
