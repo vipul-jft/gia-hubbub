@@ -8,6 +8,8 @@ class User {
     Date dateCreated
     Date lastUpdated
 
+    static hasOne = [ profile : Profile ]
+
     static constraints = {
         loginId size: 3..20, unique: true, nullable: false
         password size: 6..8, nullable: false
@@ -16,5 +18,6 @@ class User {
                 "user.password.notconfirmed"
         }
         homepage url: true, nullable: true
+        profile nullable: true
     }
 }
