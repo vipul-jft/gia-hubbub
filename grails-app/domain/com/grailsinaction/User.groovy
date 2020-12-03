@@ -9,6 +9,7 @@ class User {
     Date lastUpdated
 
     static hasOne = [ profile : Profile ]
+    static hasMany = [ posts : Post ]
 
     static constraints = {
         loginId size: 3..20, unique: true, nullable: false
@@ -19,5 +20,10 @@ class User {
         }
         homepage url: true, nullable: true
         profile nullable: true
+    }
+
+    // posts sorted when accessing them via the User object
+    static mapping = {
+        posts sort:'dateCreated'
     }
 }
